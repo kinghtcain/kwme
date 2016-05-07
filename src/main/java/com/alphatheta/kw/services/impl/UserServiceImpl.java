@@ -9,13 +9,9 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
-//@Transactional(readOnly=true)
+@Transactional
 @Service("userService")
 public class UserServiceImpl implements UserService {
-
-    UserServiceImpl(){
-        System.out.println("创建了UserService:::"+this);
-    }
 
     @Autowired
     private UserDao userDao;

@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations ={"file:src/main/webapp/WEB-INF/applicationContext.xml"})
@@ -25,6 +26,11 @@ public class UserServiceImplTest extends TestCase {
 
     @Test
     public void testFindAll() throws Exception {
+        List<User> users = userService.findAll();
+        for (User user :users){
+            System.out.println(user.getUserId());
+            System.out.println(user.getUserName());
+        }
 
     }
 }
