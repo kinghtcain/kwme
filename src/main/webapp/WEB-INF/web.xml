@@ -55,16 +55,16 @@
     </listener>
 
     <welcome-file-list>
-        <welcome-file>/html/index.html</welcome-file>
+        <welcome-file>/src/html/index.html</welcome-file>
     </welcome-file-list>
     <!-- 错误页 -->
     <error-page>
         <error-code>404</error-code>
-        <location>/html/error/404.html</location>
+        <location>/src/html/error/404.html</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/html/error/500.html</location>
+        <location>/src/html/error/500.html</location>
     </error-page>
 
 </web-app>
