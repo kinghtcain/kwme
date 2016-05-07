@@ -1,0 +1,30 @@
+package com.alphatheta.kw.services.impl;
+
+import com.alphatheta.kw.entities.User;
+import com.alphatheta.kw.services.UserService;
+import junit.framework.TestCase;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.annotation.Resource;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations ={"file:src/main/webapp/WEB-INF/applicationContext.xml"})
+public class UserServiceImplTest extends TestCase {
+
+    @Resource
+    private UserService userService;
+
+    @Test
+    public void testFind() throws Exception {
+        User user = userService.find("12");
+        System.out.println(user);
+    }
+
+    @Test
+    public void testFindAll() throws Exception {
+
+    }
+}

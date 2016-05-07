@@ -1,0 +1,58 @@
+    <!-- JPA与SpringData的整合 -->
+    <!-- 整合JPA 的EntityManagerFactory -->
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+        </property>
+        <property name="packagesToScan" value="com.alphatheta.kw"></property>
+        <property name="jpaProperties">
+            <props>
+                <!-- 方言 -->
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                <!-- 二级缓存相关 -->
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+                <prop key="net.sf.ehcache.configurationResourceName">ehcache-hibernate.xml</prop>
+
+                <!-- 生成的数据表的列的映射策略 -->
+                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+
+                <!-- hibernate 基本属性 -->
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- 配置事务管理器 -->
+    <bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"></property>
+    </bean>
+
+    <!-- 配置事务 -->
+    <tx:advice id="txAdvice" transaction-manager="jpaTransactionManager">
+        <tx:attributes>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut expression="execution( * com.alphatheta.kw.services.jpa.*.*(..))" id="pointCut"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pointCut"/>
+    </aop:config>
+
+    <!--加入SpringData  -->
+    <jpa:repositories base-package="com.alphatheta"
+                      entity-manager-factory-ref="entityManagerFactory"></jpa:repositories>
+
+
+                      MVC配置：
+                      <!-- 为了使得我们的重定向的时候能够返回消息到首页 -->
+                      	<mvc:view-controller path="/index" view-name="index" />
+                      	<mvc:view-controller path="/header" view-name="home/header" />
+                      	<mvc:view-controller path="/menu" view-name="home/menu" />
+                      	<mvc:view-controller path="/welcome" view-name="home/welcome" />
+                      	<mvc:view-controller path="/footer" view-name="home/footer" />
+                      	<mvc:view-controller path="/unauthorized" view-name="home/unauthorized" />
