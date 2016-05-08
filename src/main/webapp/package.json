@@ -2,5 +2,33 @@
  * Created by zhangzhiquan on 2016/5/8.
  项目配置文件
  */
+{
+ "name":"kwme",
+ "version":"0.0.1",
+ "authoer":"张智泉",
+ "description":"kwme is a knowledge management and explore app.",
+ "keywords":"kwme,knowledge,knowledge management",
+ "main":"app.js",
+ "respository":{
+  "type":"git",
+  "url":"https://github.com/zw231212/kwme.git"
+ },
+ //"bugs":{
+  //"url":"",
+ // "email":"191550636@qq.com"
+ //},
+ "contributors":[],
+ "license":"GPL",
+ //"scripts":{
+ // "start":"node app.js"//如果你的包里有app.js文件，npm默认将执行： node app.js.
+// },
+ "priavte":"true",//可选字段，布尔值。如果private为true，npm会拒绝发布。这可以防止私有repositories不小心被发布出去。
+ "dependencies":{
+
+ },
+ "devDependencies": {
+   "webpack": "^1.12.5"
+ }
+}
 
 
