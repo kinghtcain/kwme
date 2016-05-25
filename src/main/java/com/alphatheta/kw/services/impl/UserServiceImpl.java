@@ -5,11 +5,11 @@ import com.alphatheta.kw.entities.User;
 import com.alphatheta.kw.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
-@Transactional
+@Transactional(readOnly = true)
 @Service("userService")
 public class UserServiceImpl implements UserService {
 

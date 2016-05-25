@@ -57,9 +57,9 @@
     <root>
         <priority value="debug" />
         <appender-ref ref="console" />
-        <appender-ref ref="dailyRollingFile" />
+        <!--<appender-ref ref="dailyRollingFile" />-->
         <appender-ref ref="railyFile" />
-        <appender-ref ref="file" />
+        <!--<appender-ref ref="file" />-->
     </root>
 
 </log4j:configuration> 
