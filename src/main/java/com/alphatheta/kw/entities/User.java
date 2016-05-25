@@ -43,17 +43,32 @@ public class User {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (userId != null ? !userId.equals(user.userId) : user.userId != null) return false;
+        if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
+        return !(userAge != null ? !userAge.equals(user.userAge) : user.userAge != null);
+
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        int result = userId != null ? userId.hashCode() : 0;
+        result = 31 * result + (userName != null ? userName.hashCode() : 0);
+        result = 31 * result + (userAge != null ? userAge.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userAge='" + userAge + '\'' +
+                '}';
     }
 }

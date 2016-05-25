@@ -18,8 +18,9 @@
  // "email":"191550636@qq.com"
  //},
  "contributors":[],
- "license":"GPL",
+ "license":"MIT",
  //"scripts":{
+ //"build":"",
  // "start":"node app.js"//如果你的包里有app.js文件，npm默认将执行： node app.js.
 // },
  "priavte":"true",//可选字段，布尔值。如果private为true，npm会拒绝发布。这可以防止私有repositories不小心被发布出去。
