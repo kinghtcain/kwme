@@ -4,7 +4,6 @@
 <configuration>
 
 	<!--下划线和驼峰的自动转换-->
-
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
