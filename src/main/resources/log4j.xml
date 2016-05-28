@@ -17,6 +17,11 @@
         </filter>
     </appender>
 
+    <!--gecco的日志级别-->
+    <logger name="com.geccocrawler.gecco">
+        <level value="debug" />
+    </logger>
+
     <!-- 输出日志到文件  每天一个文件 -->
     <appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="Threshold" value="info"></param>
@@ -58,7 +63,7 @@
         <priority value="debug" />
         <appender-ref ref="console" />
         <!--<appender-ref ref="dailyRollingFile" />-->
-        <appender-ref ref="railyFile" />
+        <!--<appender-ref ref="railyFile" />-->
         <!--<appender-ref ref="file" />-->
     </root>
 
