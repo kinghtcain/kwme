@@ -1,6 +1,7 @@
 package com.alphatheta.kw.geccobean;
 
 import com.geccocrawler.gecco.annotation.*;
+import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
 @Gecco(matchUrl="https://github.com/{user}/{project}", pipelines="consolePipeline")
@@ -8,10 +9,13 @@ public class MyGitHub implements HtmlBean{
 
     private static final long serialVersionUID = -7127412585200687225L;
 
+    @Request
+    private HttpRequest request;
+
     @RequestParameter("user")
-    private String userName;
+    private String user;
     @RequestParameter("project")
-    private String projectName;
+    private String project;
     @Html
     @HtmlField(cssPath=".repository-meta-content")
     private String title;
@@ -25,20 +29,24 @@ public class MyGitHub implements HtmlBean{
     @HtmlField(cssPath = ".entry-content")
     private String readMe;
 
-    public String getUserName() {
-        return userName;
+    @Href
+    @HtmlField(cssPath="ul.numbers-summary > li:nth-child(4) > a")
+    private String contributors;
+
+    public String getUser() {
+        return user;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser(String user) {
+        this.user = user;
     }
 
-    public String getProjectName() {
-        return projectName;
+    public String getProject() {
+        return project;
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    public void setProject(String project) {
+        this.project = project;
     }
 
     public String getTitle() {
@@ -71,6 +79,21 @@ public class MyGitHub implements HtmlBean{
 
     public void setReadMe(String readMe) {
         this.readMe = readMe;
+    }
+
+    public String getContributors() {
+        return contributors;
+    }
+    public void setContributors(String contributors) {
+        this.contributors = contributors;
+    }
+
+    public HttpRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(HttpRequest request) {
+        this.request = request;
     }
     /**
      * 代码说明：

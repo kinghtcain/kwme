@@ -11,11 +11,14 @@ public class MyGitHubTest {
                 .classpath("com.alphatheta.kw.geccobean")
                 //开始抓取的页面地址
                 .start("https://github.com/xtuhcy/gecco")
+                .start("https://github.com/xtuhcy/gecco-spring")
+                .start("https://github.com/zw231212/kwme")
                 //开启几个爬虫线程
-                .thread(1)
+                .thread(3)
                 //单个爬虫每次抓取完一个请求后的间隔时间
                 .interval(2000)
-                .debug(true)
+                .loop(true)
+                .debug(false)
                 .start();
     }
 }
