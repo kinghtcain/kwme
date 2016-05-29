@@ -1,5 +1,10 @@
 package com.alphatheta.kw.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Table(name="kw_lagou_job_similar_links")
+@Entity
 public class LagouJobSimilarLinks {
     private String id;
 

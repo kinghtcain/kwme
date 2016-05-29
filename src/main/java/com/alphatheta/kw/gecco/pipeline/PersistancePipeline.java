@@ -27,9 +27,7 @@ public class PersistancePipeline implements Pipeline<Job> {
     @Override
     public void process(Job job) {
         System.out.println("============="+job+"-----");
-    }
-    /*
-    //先保存主job
+        //先保存主job
         String uuid2 = UUID.randomUUID().toString().replaceAll("-", "");
         LagouJob lagouJob = new LagouJob();
         lagouJob.setJobAddress(job.getJobAddress());
@@ -54,5 +52,8 @@ public class PersistancePipeline implements Pipeline<Job> {
             String save1 = lagouJobSimilarlinksService.save(slinks);
             System.out.printf("save return " + save1);
         }
+    }
+    /*
+
      */
 }

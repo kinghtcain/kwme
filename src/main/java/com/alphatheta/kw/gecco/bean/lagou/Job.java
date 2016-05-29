@@ -1,6 +1,7 @@
 package com.alphatheta.kw.gecco.bean.lagou;
 
 import com.geccocrawler.gecco.annotation.*;
+import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
 import java.util.List;
@@ -13,6 +14,9 @@ import java.util.List;
 public class Job implements HtmlBean{
 
     private static final long serialVersionUID = -377053120283382723L;
+
+    @Request
+    private HttpRequest request;
 
     @RequestParameter("jobId")
     private Integer jobId;
@@ -34,10 +38,6 @@ public class Job implements HtmlBean{
     @Html
     @HtmlField(cssPath = ".job_detail dd.job_bt")
     private String jobDescription;
-    @Html
-    @HtmlField(cssPath="div.content_r dl.job_company dd div.work_addr")
-    private String jobAddress;
-
     //@Href(value = ".position_link")
     //@HtmlField(cssPath=".similar_list_item a.position_link")//获取的是全部简介信息
     /*
@@ -48,7 +48,17 @@ public class Job implements HtmlBean{
     @Attr("href")
     @HtmlField(cssPath=".similar_list_item a[href]")//加上Attr获取的是链接地址，加上Href可以再去抓取
     private List<String> similarJobLinks;
-
+    //@Text
+    //有些div没有class,这时候就会获取到空值
+    @Html
+    @HtmlField(cssPath="div.content_r dl.job_company dd div.work_addr,dl.job_company dd div:nth-child(0)")
+    private String jobAddress;
+    public HttpRequest getRequest() {
+        return request;
+    }
+    public void setRequest(HttpRequest request) {
+        this.request = request;
+    }
     public Integer getJobId() {
         return jobId;
     }

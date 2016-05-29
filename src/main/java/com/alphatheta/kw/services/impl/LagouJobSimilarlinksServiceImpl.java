@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by escience on 2016/5/29.
  */
 @Transactional(readOnly = true)
-@Service("lagouJobSimilarlinks")
-public class LagouJobSimilarlinksServiceImpl {
+@Service("lagouJobSimilarlinksService")
+public class LagouJobSimilarlinksServiceImpl implements LagouJobSimilarlinksService{
 
     @Autowired
     private LagouJobSimilarLinksMapper lagouJobSimilarLinksMapper;
