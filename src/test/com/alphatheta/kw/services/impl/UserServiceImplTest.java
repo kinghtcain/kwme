@@ -28,7 +28,7 @@ public class UserServiceImplTest extends TestCase {
     @Test
     public void testFindAll() throws Exception {
         List<User> users = userService.findAll();
-
+        System.out.println(users.size());
         for (User user :users){
             System.out.println(user.getUserId());
             System.out.println(user.getUserName());
