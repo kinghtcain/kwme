@@ -10,7 +10,7 @@ import java.nio.file.FileSystem;
 public class SpringTest {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
         try {
             System.in.read();
         } catch (IOException e) {
