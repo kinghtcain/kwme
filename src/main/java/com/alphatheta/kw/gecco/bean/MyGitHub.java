@@ -1,4 +1,4 @@
-package com.alphatheta.kw.geccobean;
+package com.alphatheta.kw.gecco.bean;
 
 import com.geccocrawler.gecco.annotation.*;
 import com.geccocrawler.gecco.request.HttpRequest;

@@ -7,6 +7,7 @@ import java.util.Map;
 
 public interface BaseService<T> {
 
+    String save(T t);
     T findById(Integer id);
     T findById(String id);
     T findByProps(String propName,Object propVal);

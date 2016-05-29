@@ -51,6 +51,10 @@
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
     </bean>
 
+    <bean id="springPipelineFactory" class="com.geccocrawler.gecco.spring.SpringPipelineFactory"/>
+
+    <bean id="consolePipeline" class="com.geccocrawler.gecco.spring.ConsolePipeline"/>
+
     <!-- DAO接口所在包名，Spring会自动查找其下的类:
         basePackage:指定sql映射文件/接口所在的包（自动扫描）-->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">

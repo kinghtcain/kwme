@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.io.FileOutputStream;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,12 +23,14 @@ public class UserServiceImplTest extends TestCase {
     @Test
     public void testFind() throws Exception {
         User user = userService.find("12");
+        User user2 = new User();
         System.out.println(user);
     }
 
     @Test
     public void testFindAll() throws Exception {
         List<User> users = userService.findAll();
+
         for (User user :users){
             System.out.println(user.getUserId());
             System.out.println(user.getUserName());

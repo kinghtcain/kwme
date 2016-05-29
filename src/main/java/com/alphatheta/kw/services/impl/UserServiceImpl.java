@@ -22,10 +22,10 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-
     @Transactional
     public List<User> findAll() {
         List<User> users = userDao.findAll();
+        List<User> list = userDao.findAll();
         return users;
     }
 }

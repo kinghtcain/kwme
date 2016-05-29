@@ -8,7 +8,7 @@ public class MyGitHubTest {
     public static void main(String[] args) {
         GeccoEngine.create()
                 //搜索包的路径
-                .classpath("com.alphatheta.kw.geccobean")
+                .classpath("com.alphatheta.kw.gecco.bean")
                 //开始抓取的页面地址
                 .start("https://github.com/xtuhcy/gecco")
                 .start("https://github.com/xtuhcy/gecco-spring")
