@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Created by escience on 2016/5/29.
+ *
+ * Created by zhangzhiquan on 2016/5/29.
  */
 @Service("persistPipeline")
 public class PersistancePipeline implements Pipeline<Job> {

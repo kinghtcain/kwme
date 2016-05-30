@@ -5,7 +5,7 @@ import com.geccocrawler.gecco.spring.SpringGeccoEngine;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by escience on 2016/5/29.
+ * Created by zhangzhiquan on 2016/5/29.
  */
 @Service
 public class InitGecco extends SpringGeccoEngine {
@@ -16,7 +16,7 @@ public class InitGecco extends SpringGeccoEngine {
                     .pipelineFactory(springPipelineFactory)
                     .classpath("com.alphatheta.kw.gecco.bean.lagou")
                     .start("http://www.lagou.com/jobs/1843450.html")
-                    .interval(5000)
+                    .interval(5000).loop(false)
                     .start();
         }
 }

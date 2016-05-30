@@ -7,7 +7,7 @@ import com.geccocrawler.gecco.spider.HtmlBean;
 import java.util.List;
 
 /**
- * Created by escience on 2016/5/29.
+ * Created by zhangzhiquan on 2016/5/29.
  */
 @Gecco(matchUrl = "http://www.lagou.com/jobs/{jobId}.html",pipelines = { "consolePipeline",
         "persistPipeline" })
@@ -44,6 +44,8 @@ public class Job implements HtmlBean{
     "<div class=\"similar_list_item_logo\"> \n <img src=\"http://www.lagou.com/image1/M00/43/DD/CgYXBlXS_-iASe7RAAAHygPNQPI809.png?cc=0.8934424857143313\" alt=\"京东－大数据部\" width=\"56\" height=\"56\"> \n</div> \n<div class=\"similar_list_item_pos\"> \n <h2 title=\"Java高级开发工程师\">Java高级开发工程师</h2> \n <p>30k-60k</p> \n <p class=\"similar_company_name\"><span class=\"similar_company_name_span\">京东－大数据部 </span> <span>[北京·大屯]</span> </p> \n</div>"
      */
     //@Text
+    //这里面的链接有重复的数据，我们在获取这样的链接后应该自己处理，而不是交给gecco处理，
+    //要不然重复的队列里面有重复的数据，会造成gecco报错，而且爬取到的数据也会有重复的
     @Href(click = true)
     @Attr("href")
     @HtmlField(cssPath=".similar_list_item a[href]")//加上Attr获取的是链接地址，加上Href可以再去抓取
@@ -53,6 +55,7 @@ public class Job implements HtmlBean{
     @Html
     @HtmlField(cssPath="div.content_r dl.job_company dd div.work_addr,dl.job_company dd div:nth-child(0)")
     private String jobAddress;
+
     public HttpRequest getRequest() {
         return request;
     }
