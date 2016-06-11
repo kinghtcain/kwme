@@ -9,8 +9,8 @@ import java.util.List;
 /**
  * Created by zhangzhiquan on 2016/5/29.
  */
-@Gecco(matchUrl = "http://www.lagou.com/jobs/{jobId}.html",pipelines = { "consolePipeline",
-        "persistPipeline" })
+@Gecco(matchUrl = "http://www.lagou.com/jobs/{jobId}.html"/*,pipelines = { "consolePipeline",
+        "persistPipeline" }*/)
 public class Job implements HtmlBean{
 
     private static final long serialVersionUID = -377053120283382723L;

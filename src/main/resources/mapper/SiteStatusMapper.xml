@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alphatheta.kw.daos.SiteStatusDao">
+
+        <resultMap type="com.alphatheta.kw.entities.SiteStatus" id="siteStatusResultMap">
+                <id property="siteId" column="site_id"/>
+                <result property="statusCode" column="status_code"/>
+                <result property="reqTime" column="req_time"/>
+                <result property="reqDate" column="req_date"/>
+        </resultMap>
+        <select id="findAll" resultMap="siteStatusResultMap">
+                select * FROM kw_webstatus;
+        </select>
+        <select id="find" resultType="com.alphatheta.kw.entities.SiteStatus">
+                SELECT * FROM kw_webstatus ss WHERE ss.site_id=#{id};
+        </select>
+        <insert id="save" parameterType="com.alphatheta.kw.entities.SiteStatus">
+                INSERT INTO kw_webstatus
+                (site_id,status_code,req_time,req_date)
+                VALUES (#{siteId},#{statusCode},#{reqTime},#{reqDate})
+        </insert>
+        <update id="update" parameterType="com.alphatheta.kw.entities.SiteStatus">
+                UPDATE kw_webstatus
+                <set >
+                <if test="statusCode != null" >
+                    status_code = #{statusCode},
+                </if>
+                <if test="reqTime != null">
+                    req_time = #{req_time},
+                </if>
+                <if test="reqDate != null">
+                   req_date = #{reqDate}
+                </if>
+                </set>
+                WHERE site_id = #{siteId};
+        </update>
+
+</mapper>

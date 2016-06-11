@@ -40,7 +40,7 @@ public class PersistancePipeline implements Pipeline<Job> {
         lagouJob.setJobPublishTime(job.getJobPublishTime());
         lagouJob.setJobRequest(job.getJobRequest());
         String save = lagouJobService.save(lagouJob);
-        System.out.printf("save return " + save);
+        System.out.println("save return " + save);
         //再去保存link的job信息
         List<String> similarJobLinks = job.getSimilarJobLinks();
         for (int i = 0; i < similarJobLinks.size(); i++) {
@@ -50,7 +50,7 @@ public class PersistancePipeline implements Pipeline<Job> {
             slinks.setLink(similarJobLinks.get(i));
             slinks.setSourceJobId(lagouJob.getId());
             String save1 = lagouJobSimilarLinksService.save(slinks);
-            System.out.printf("save return " + save1);
+            System.out.println("save return " + save1);
         }
     }
     /*

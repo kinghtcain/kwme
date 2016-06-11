@@ -3,4 +3,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.alphatheta.kw.daos.WebSitesDao">
 
+        <resultMap type="com.alphatheta.kw.entities.WebSites" id="webSitesResultMap">
+                <id property="siteId" column="site_id"/>
+                <result property="siteHomepage" column="site_homepage"/>
+        </resultMap>
+        <select id="findAll" resultMap="webSitesResultMap">
+                select * FROM kw_websites;
+        </select>
+        <select id="find" resultType="com.alphatheta.kw.entities.WebSites">
+                SELECT * FROM kw_websites web WHERE web.site_id=#{id};
+        </select>
+        <insert id="save" parameterType="com.alphatheta.kw.entities.WebSites">
+                INSERT INTO des_websites
+                (site_id,site_homepage)
+                VALUES (#{siteId},#{siteHomePage})
+        </insert>
+        <update id="update" parameterType="com.alphatheta.kw.entities.WebSites">
+                UPDATE des_websites set site_homepage = #{siteHomepage}  where site_id = #{siteId};
+        </update>
+
 </mapper>

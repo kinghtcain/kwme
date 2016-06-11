@@ -5,6 +5,10 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 还没有实现
+ * @param <T>
+ */
 public interface BaseService<T> {
 
     String save(T t);

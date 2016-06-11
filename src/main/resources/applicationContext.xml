@@ -9,7 +9,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+       >
 
 
     <!-- 自动扫描 -->
@@ -18,7 +19,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
 
-    <!-- 引入配置文件 -->
+    <!-- 引入数据库配置文件 -->
     <context:property-placeholder location="classpath:jdbc.properties" />
     <!--<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:jdbc.properties"/>
@@ -42,7 +43,7 @@
         <property name="maxWait" value="${jdbc.maxWait}"></property>
     </bean>
 
-    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件,
+    <!-- spring和MyBatis整合，
      SqlSession的工厂: SqlSessionFactoryBean-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
@@ -70,5 +71,34 @@
 
     <!--声明式事务管理-->
     <tx:annotation-driven transaction-manager="transactionManager" />
+    <!--声明定时器任务-->
 
+    <!--1.配置调度任务对应的bean的id和自定义的class-->
+    <bean id="pageRequestQuartz" class="com.alphatheta.kw.quartz.PageRequestQuartz"></bean>
+    <!--2.配置调度任务对应的bean的id和执行的方法-->
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="pageRequestQuartz" />
+        <property name="targetMethod" value="getStatus" />
+        <!--作业是否并发调度-->
+        <property name="concurrent" value="false" />
+    </bean>
+    <!--3.配置调度任务执行的触发的时间-->
+    <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="jobDetail" />
+        <property name="cronExpression">
+            <!--每分钟的第三秒执行任务调度
+            http://gcy6164.iteye.com/blog/1287941
+            -->
+            <value>3 * * * * ?</value>
+        </property>
+    </bean>
+    <!--4.Quartz的调度工厂，调度工厂只能有一个，多个调度任务在list中添加-->
+    <bean id="stdScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <!--所有的调度列表-->
+                <ref bean="cronTrigger" />
+            </list>
+        </property>
+    </bean>
 </beans>
