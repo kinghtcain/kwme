@@ -23,8 +23,9 @@ public class QuartzService {
     public void removeJob(String jobName,String jobGroupName,
                           String triggerName,String triggerGroupName)throws SchedulerException{
         Scheduler scheduler = stdSchedulerFactory.getScheduler();
-        scheduler.pauseTrigger(triggerName,triggerGroupName);//暂停触发器;
-        scheduler.unscheduleJob(triggerName,triggerGroupName);//移除触发器
+        //quartz 1 和2有不同
+        scheduler.pauseTrigger(triggerName, triggerGroupName);//暂停触发器;
+        scheduler.unscheduleJob(triggerName, triggerGroupName);//移除触发器
         scheduler.deleteJob(jobName,jobGroupName);//删除任务
     }
 }

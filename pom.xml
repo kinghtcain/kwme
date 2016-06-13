@@ -246,10 +246,15 @@
             <artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
             <version>4.0.7.RELEASE_2</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>1.8.6</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.1</version>
         </dependency>
         <!--定时器任务end-->
         <!--httpclient-->
