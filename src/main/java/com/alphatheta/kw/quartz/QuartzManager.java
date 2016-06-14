@@ -14,16 +14,15 @@ import java.text.ParseException;
  * 一个Quartz管理器
  * //http://www.open-open.com/lib/view/open1351324322285.html
  */
-@Component
-public class QuartzManager {
+public class QuartzManager {//下面是Quartz1的实现，quartz 1 和2有不同
 
     //private static final Logger logger = LoggerFactory.getLogger(QuartzManager.class);
 
-    @Autowired
+   /* @Autowired
     private static SchedulerFactoryBean stdSchedulerFactory;
 
     private static String JOB_GROUP_NAME = "SPRING_QUARTZ_JOB";
-    private static String TRIGGER_GROUP_NAME = "SPRING_QUARTZ_TRIGGER";
+    private static String TRIGGER_GROUP_NAME = "SPRING_QUARTZ_TRIGGER";*/
 
     /**
      * 添加一个定时任务，使用默认的任务组名，触发器名，触发器组名
@@ -34,7 +33,7 @@ public class QuartzManager {
      * @throws ParseException
      * @throws SchedulerException
      */
-    public static void addJob(String jobName, Class clazz, String time)
+    /*public static void addJob(String jobName, Class clazz, String time)
             throws ParseException, SchedulerException {
         Scheduler scheduler = stdSchedulerFactory.getScheduler();
         JobDetail jobDetail = new JobDetail(jobName, JOB_GROUP_NAME, clazz);
@@ -45,7 +44,7 @@ public class QuartzManager {
         if (!scheduler.isShutdown()) {
             scheduler.start();
         }
-    }
+    }*/
 
     /**
      * @param jobName          任务名
@@ -57,7 +56,7 @@ public class QuartzManager {
      * @Description: 添加一个定时任务
      * @Title: QuartzManager.java
      */
-    public static void addJob(String jobName, String jobGroupName,
+    /*public static void addJob(String jobName, String jobGroupName,
                               String triggerName, String triggerGroupName, Class jobClass,
                               String time) throws ParseException, SchedulerException {
         Scheduler sched = stdSchedulerFactory.getScheduler();
@@ -66,7 +65,7 @@ public class QuartzManager {
         CronTrigger trigger = new CronTrigger(triggerName, triggerGroupName);// 触发器名,触发器组
         trigger.setCronExpression(time);// 触发器时间设定
         sched.scheduleJob(jobDetail, trigger);
-    }
+    }*/
 
     /**
      * @param jobName
@@ -74,7 +73,7 @@ public class QuartzManager {
      * @Description: 修改一个任务的触发时间(使用默认的任务组名，触发器名，触发器组名)
      * @Title: QuartzManager.java
      */
-    public static void modifyJobTime(String jobName, String time) throws ParseException, SchedulerException {
+    /*public static void modifyJobTime(String jobName, String time) throws ParseException, SchedulerException {
         Scheduler sched = stdSchedulerFactory.getScheduler();
         CronTrigger trigger = (CronTrigger) sched.getTrigger(jobName, TRIGGER_GROUP_NAME);
         if (trigger == null) {
@@ -87,7 +86,7 @@ public class QuartzManager {
             removeJob(jobName);
             addJob(jobName, objJobClass, time);
         }
-    }
+    }*/
 
     /**
      * @param triggerName
@@ -96,7 +95,7 @@ public class QuartzManager {
      * @Description: 修改一个任务的触发时间
      * @Title: QuartzManager.java
      */
-    public static void modifyJobTime(String triggerName, String triggerGroupName, String time)
+    /*public static void modifyJobTime(String triggerName, String triggerGroupName, String time)
             throws ParseException, SchedulerException {
         Scheduler sched = stdSchedulerFactory.getScheduler();
         CronTrigger trigger = (CronTrigger) sched.getTrigger(triggerName, triggerGroupName);
@@ -111,19 +110,19 @@ public class QuartzManager {
             // 重启触发器
             sched.resumeTrigger(triggerName, triggerGroupName);
         }
-    }
+    }*/
 
     /**
      * @param jobName
      * @Description: 移除一个任务(使用默认的任务组名，触发器名，触发器组名)
      * @Title: QuartzManager.java
      */
-    public static void removeJob(String jobName) throws SchedulerException {
+    /*public static void removeJob(String jobName) throws SchedulerException {
         Scheduler sched = stdSchedulerFactory.getScheduler();
         sched.pauseTrigger(jobName, TRIGGER_GROUP_NAME);// 停止触发器
         sched.unscheduleJob(jobName, TRIGGER_GROUP_NAME);// 移除触发器
         sched.deleteJob(jobName, JOB_GROUP_NAME);// 删除任务
-    }
+    }*/
 
     /**
      * @param jobName
@@ -133,34 +132,34 @@ public class QuartzManager {
      * @Description: 移除一个任务
      * @Title: QuartzManager.java
      */
-    public static void removeJob(String jobName, String jobGroupName,
+    /*public static void removeJob(String jobName, String jobGroupName,
                                  String triggerName, String triggerGroupName) throws SchedulerException {
         Scheduler sched = stdSchedulerFactory.getScheduler();
         sched.pauseTrigger(triggerName, triggerGroupName);// 停止触发器
         sched.unscheduleJob(triggerName, triggerGroupName);// 移除触发器
         sched.deleteJob(jobName, jobGroupName);// 删除任务
-    }
+    }*/
 
     /**
      * @Description:启动所有定时任务
      * @Title: QuartzManager.java
      */
-    public static void startJobs() throws SchedulerException {
+    /*public static void startJobs() throws SchedulerException {
         Scheduler sched = stdSchedulerFactory.getScheduler();
         sched.start();
-    }
+    }*/
 
     /**
      * @Description:关闭所有定时任务
      * @Title: QuartzManager.java
      */
-    public static void shutdownJobs() throws SchedulerException {
+    /*public static void shutdownJobs() throws SchedulerException {
         Scheduler sched = stdSchedulerFactory.getScheduler();
         if (!sched.isShutdown()) {
             sched.shutdown();
         }
     }
-
+*/
 
     //========================================================
     //http://www.dexcoder.com/selfly/article/311
